@@ -17,14 +17,10 @@
                     class="oe_inline oe_no_button"
                     attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}"
                 />
-                <field
+               <field
                     name="secondary_uom_id"
                     class="oe_inline"
-                    domain="['|', ('product_id', '=', product_id),
-                                '&amp;', ('product_tmpl_id.product_variant_ids', 'in', [product_id]),
-                                         ('product_id', '=', False)]"
-                    options="{'no_create': True}"
-                    attrs="{'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))], 'required': [('secondary_uom_qty', '!=', 0.0)]}"
+                    attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}"
                 />
             </xpath>
             <xpath
@@ -34,16 +30,12 @@
                 <field
                     name="secondary_uom_qty"
                     attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}"
-                    optional="show"
                 />
                 <field
                     name="secondary_uom_id"
-                    domain="['|', ('product_id', '=', product_id),
-                                '&amp;', ('product_tmpl_id.product_variant_ids', 'in', [product_id]),
-                                         ('product_id', '=', False)]"
+                    domain="[('product_tmpl_id.product_variant_ids', 'in', product_id and [product_id] or [])]"
                     options="{'no_create': True}"
-                    attrs="{'readonly': [('state', 'in', ('purchase','done', 'cancel'))], 'required': [('secondary_uom_qty', '!=', 0.0)]}"
-                    optional="show"
+                    attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}"
                 />
             </xpath>
         </field>

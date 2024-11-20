@@ -9,5 +9,4 @@ class ProductTemplate(models.Model):
     purchase_secondary_uom_id = fields.Many2one(
         comodel_name="product.secondary.unit",
         string="Default secondary unit for purchases",
-        domain="[('product_tmpl_id', '=', id), ('product_id', '=', False)]",
     )
